@@ -1,0 +1,20 @@
+<svg
+  width="16"
+  height="16"
+  viewBox="0 0 64 64"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Roof -->
+  <path
+    d="M8 22L32 8L56 22V26H8V22Z"
+    fill="#6B1011"
+  />
+
+  <!-- Columns -->
+  <rect x="14" y="26" width="6" height="24" fill="#6B1011"/>
+  <rect x="29" y="26" width="6" height="24" fill="#6B1011"/>
+  <rect x="44" y="26" width="6" height="24" fill="#6B1011"/>
+
+  <!-- Base -->
+  <rect x="10" y="50" width="44" height="6" rx="2" fill="#6B1011"/>
+</svg>

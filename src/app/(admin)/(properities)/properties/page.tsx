@@ -1,9 +1,9 @@
 "use client"; // required in Next.js App Router
 
-import { Badge, Button, Modal, Space, Table, Tag } from "antd";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { Button, Image, Modal, Space, Table, Tag } from "antd";
+import { useEffect, useMemo, useState } from "react";
 import * as XLSX from "xlsx";
-import { usePropertiesDataStore } from "../../../../stores/propertiesStore/data.store";
+import { Property, usePropertiesDataStore } from "../../../../stores/propertiesStore/data.store";
 import { useCustomerDataStore } from "../../../../stores/customersStore/data.store";
 
 export default function PropertiesPage() {
@@ -25,6 +25,32 @@ export default function PropertiesPage() {
   const [delitedID, setDelitedID] = useState(0);
   const [open2, setOpen2] = useState(false);
   const [loading2, setLoading2] = useState(false);
+  //Show Modal 
+  const [chosenID, setChosenID] = useState(1);
+  const [open3, setOpen3] = useState(false);
+  const [loading3, setLoading3] = useState(false);
+  const [image1, setImage1] = useState("")
+  const [image2, setImage2] = useState("")
+  const [image3, setImage3] = useState("")
+  const [image4, setImage4] = useState("")
+  const [image5, setImage5] = useState("")
+
+  //openShowModal
+  const openShowModal = (id: number) => {
+    setChosenID(id);
+    const property = dataProperties?.find(
+      item => item.id === id
+    );
+    setImage1(property.image1)
+    setImage2(property.image2)
+    setImage3(property.image3)
+    setImage4(property.image4)
+    setImage5(property.image5)
+
+    console.log(property.image1);
+    console.log(property);
+    setOpen3(true);
+  }
   //openDeleteModal
   const openDeleteModal = (id: number) => {
     setDelitedID(id);
@@ -137,6 +163,12 @@ export default function PropertiesPage() {
       key: "id",
       render: (_: any, record: any) => (
         <Space size="middle">
+          <Button
+            type="default"
+            onClick={() => openShowModal(record.id)}
+          >
+            Show
+          </Button>
           {record.isActive ? (
             <Button
               type="primary"
@@ -186,6 +218,68 @@ export default function PropertiesPage() {
       okType="danger"
       okButtonProps={{ type: "primary" }} // 🔥 bold & strong
     >
+    </Modal>
+    <Modal
+      title="Showing Property"
+      open={open3}
+      onOk={() => setOpen3(false)}
+      onCancel={() => setOpen3(false)}
+      confirmLoading={loading2}
+      mask={false}
+      okType="default"
+      bodyStyle={{ maxHeight: '60vh', overflowY: 'auto',overflowX:'clip' }}
+      okButtonProps={{ type: "primary" }} // 🔥 bold & strong
+    >
+      <Image
+        src={image1}
+        alt="404"
+        width={472}
+        height={152}
+        style={{
+          objectFit: 'contain',
+          borderRadius: 12,
+        }}
+      />
+      <Image
+        src={image2}
+        alt="404"
+        width={472}
+        height={152}
+        style={{
+          objectFit: 'contain',
+          borderRadius: 12,
+        }}
+      />
+      <Image
+        src={image2}
+        alt="404"
+        width={472}
+        height={152}
+        style={{
+          objectFit: 'contain',
+          borderRadius: 12,
+        }}
+      />
+      <Image
+        src={image3}
+        alt="404"
+        width={472}
+        height={152}
+        style={{
+          objectFit: 'contain',
+          borderRadius: 12,
+        }}
+      />
+      <Image
+        src={image4}
+        alt="404"
+        width={472}
+        height={152}
+        style={{
+          objectFit: 'contain',
+          borderRadius: 12,
+        }}
+      />
     </Modal>
     <Table rowKey="id"
       scroll={{ x: "max-content" }}

@@ -33,6 +33,11 @@ export interface Property {
   typeOfWorkId: number;
   statusId: number;
   customerId: number | null;
+  image1:string;
+  image2:string;
+  image3:string;
+  image4:string;
+  image5:string;
 }
 export interface TypeOfProperty {
   id: number,

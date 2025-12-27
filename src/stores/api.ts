@@ -1,7 +1,7 @@
 // api.ts
 import axios from 'axios';
 import { useAuthStore } from './customersStore/auth.store';
-const url =`https://emaarbackend-production.up.railway.app`
+const url = `https://emaarbackend-production.up.railway.app`
 export const apiCustomer = axios.create({
   baseURL: `${url}/customer`,
   headers: { 'Content-Type': 'application/json' },
@@ -208,3 +208,21 @@ apiTypeOfCompany.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+//Api for getting urls for TypeOfProperties Images
+export const apiTypeOfPropertyImage = axios.create({
+  baseURL: `${url}/images/upload`,
+});
+
+// 🧠 Automatically attach the latest token before each request
+apiTypeOfPropertyImage.interceptors.request.use(
+  (config) => {
+    const token = useAuthStore.getState().authData?.token;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    } else {
+      delete config.headers.Authorization;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);

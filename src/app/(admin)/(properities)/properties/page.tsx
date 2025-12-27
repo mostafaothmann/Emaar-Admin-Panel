@@ -251,16 +251,6 @@ export default function PropertiesPage() {
         }}
       />
       <Image
-        src={image2}
-        alt="404"
-        width={472}
-        height={152}
-        style={{
-          objectFit: 'contain',
-          borderRadius: 12,
-        }}
-      />
-      <Image
         src={image3}
         alt="404"
         width={472}
@@ -272,6 +262,16 @@ export default function PropertiesPage() {
       />
       <Image
         src={image4}
+        alt="404"
+        width={472}
+        height={152}
+        style={{
+          objectFit: 'contain',
+          borderRadius: 12,
+        }}
+      />
+      <Image
+        src={image5}
         alt="404"
         width={472}
         height={152}

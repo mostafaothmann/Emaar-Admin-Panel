@@ -42,10 +42,12 @@ export interface Property {
 export interface TypeOfProperty {
   id: number,
   name: string,
+  image:string;
   description: string,
 }
 export interface TypeOfPropertyAdded {
   name: string,
+  image:string,
   description: string,
 }
 export interface TypeOfWork {

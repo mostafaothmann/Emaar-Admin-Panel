@@ -102,7 +102,7 @@ export const useMaterialesDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfMaterial.post(``, typeOFMaterial);
-          if (res.status != 201) { alert("not added") }
+          if (res.status != 201) { }
 
         } catch (err: any) {
           set({
@@ -116,8 +116,7 @@ export const useMaterialesDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiMaterial.delete(`/${id}`);
-          if (res.status == 201)
-            alert("deleted")
+          if (res.status == 201) { }
         } catch (err: any) {
           set({
             error: err.response?.data?.message || 'Error Loading Properties',
@@ -130,8 +129,8 @@ export const useMaterialesDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfMaterial.delete(`/${id}`);
-          if (res.status == 201)
-            alert("deleted")
+          if (res.status == 201) { }
+
         } catch (err: any) {
           set({
             error: err.response?.data?.message || 'Error Loading Properties',
@@ -145,8 +144,8 @@ export const useMaterialesDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfMaterial.patch(`/${id}`, typeOfMaterial);
-          if (res.status == 201)
-            alert("edited")
+          if (res.status == 201) { }
+
         } catch (err: any) {
           set({
             error: err.response?.data?.message || 'Error Loading Properties',

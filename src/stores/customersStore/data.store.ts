@@ -111,28 +111,23 @@ export const useCustomerDataStore = create<DataStore>()(
             error: err.response?.data?.message || 'Error Loading Properties',
             loading: false,
           });
-          console.log(err.response.data)
         }
       },
        // Update Custoemr Data (My Data)
       updateCustomerData: async (updatedCustomerData:UpdateCustomer) => {
         set({ loading: true, error: null });
         try {
-          const { authData } = useAuthStore.getState(); // ✅ dynamically get latest auth data
-          console.log("hey ther d;afsjdfljasd;fljasd;lfjasd;fj ;fl  ;lfjasd;fl")
-          console.log(updatedCustomerData)
+          const { authData } = useAuthStore.getState();
           const res = await apiCustomer.patch(`/${authData?.id}`,updatedCustomerData);
           const status = res.status
           set({  loading: false });
-          if(status==201)
-            console.log("updated")
+          if(status==201){}
           return status.toString;
         } catch (err: any) {
           set({
             error: err.response?.data?.message || 'Error Loading Properties',
             loading: false,
           });
-          console.log(err.response.data)
         }
       },
        // Edit Custoemr Data (Any Data)
@@ -149,7 +144,6 @@ export const useCustomerDataStore = create<DataStore>()(
             error: err.response?.data?.message || 'Error Loading Properties',
             loading: false,
           });
-          console.log(err.response.data)
         }
       },
       getCustomerOffers: async () => {
@@ -159,7 +153,6 @@ export const useCustomerDataStore = create<DataStore>()(
           const res = await apiCustomer.get(`/${authData?.id}/offers`);
           const customerOffers = res.data
           set({ customerOffers, loading: false });
-          console.log(res.data.message)
           return customerOffers
         } catch (err: any) {
           set({
@@ -172,7 +165,6 @@ export const useCustomerDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const { authData } = useAuthStore.getState();
-
           const res = await apiCustomer.get(``);
           const dataCustomers = res.data
           set({ dataCustomers, loading: false });
@@ -200,7 +192,7 @@ export const useCustomerDataStore = create<DataStore>()(
         } catch (err: any) {
 
           if (err.status == "500") {
-            //alert(err.status)
+          alert(err.status)
           }
 
           set({

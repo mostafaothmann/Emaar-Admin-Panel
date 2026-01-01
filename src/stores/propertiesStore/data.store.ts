@@ -33,21 +33,21 @@ export interface Property {
   typeOfWorkId: number;
   statusId: number;
   customerId: number | null;
-  image1:string;
-  image2:string;
-  image3:string;
-  image4:string;
-  image5:string;
+  image1: string;
+  image2: string;
+  image3: string;
+  image4: string;
+  image5: string;
 }
 export interface TypeOfProperty {
   id: number,
   name: string,
-  image:string;
+  image: string;
   description: string,
 }
 export interface TypeOfPropertyAdded {
   name: string,
-  image:string,
+  image: string,
   description: string,
 }
 export interface TypeOfWork {
@@ -92,10 +92,10 @@ interface DataStore {
   deleteTypeOfWork: (id: number) => Promise<void>;
   deleteTypeOfOwnering: (id: number) => Promise<void>;
   deleteCustomerOffer: (propertyId: number) => Promise<void>;
-  editProperty: (id:number,property: Property) => Promise<void>;
-  editTypeOfProperty: (id:number,typeOfProperty: TypeOfPropertyAdded) => Promise<void>;
-  editTypeOfWork: (id:number,typeOfWork: TypeOfWorkAdded) => Promise<void>;
-  editTypeOfOwnering: (id:number ,typeOfOwnering: TypeOfOwneringAdded) => Promise<void>;
+  editProperty: (id: number, property: Property) => Promise<void>;
+  editTypeOfProperty: (id: number, typeOfProperty: TypeOfPropertyAdded) => Promise<void>;
+  editTypeOfWork: (id: number, typeOfWork: TypeOfWorkAdded) => Promise<void>;
+  editTypeOfOwnering: (id: number, typeOfOwnering: TypeOfOwneringAdded) => Promise<void>;
 }
 //gettig the token from Auth Store 
 export const usePropertiesDataStore = create<DataStore>()(
@@ -200,8 +200,8 @@ export const usePropertiesDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfProperty.delete(`/${id}`);
-          if (res.status==201)
-            alert("deleted")
+          if (res.status == 201) {
+          }
         } catch (err: any) {
           set({
             error: err.response?.data?.message || 'Error Loading Properties',
@@ -243,11 +243,10 @@ export const usePropertiesDataStore = create<DataStore>()(
           const { authData } = useAuthStore.getState();
           offer.Customerid = authData?.id
           offer.Propertyid = id;
-          console.log(offer)
           const res = await apiCPO.post(``, offer);
           set({ loading: false });
           if (res.status == 201) {
-            alert("Offer Added")
+
           }
         } catch (err: any) {
           set({
@@ -266,7 +265,6 @@ export const usePropertiesDataStore = create<DataStore>()(
           const res = await apiCPO.delete(`${customerId}/${proeprtyId}`);
           set({ loading: false });
           if (res.status == 201) {
-            alert("Offer Deleted")
           }
         } catch (err: any) {
           set({
@@ -276,11 +274,11 @@ export const usePropertiesDataStore = create<DataStore>()(
         }
       },
       //Editing Property
-      editProperty: async (id:number,property: Property) => {
+      editProperty: async (id: number, property: Property) => {
         set({ loading: true, error: null });
         try {
           const res = await apiProperty.patch(`/${id}`, property);
-          if (res.status != 201) {  }
+          if (res.status != 201) { }
 
         } catch (err: any) {
           set({
@@ -290,11 +288,11 @@ export const usePropertiesDataStore = create<DataStore>()(
         }
       },
       //Editing TypeOfProperty
-      editTypeOfProperty: async (id:number,typeOfProperty: TypeOfPropertyAdded) => {
+      editTypeOfProperty: async (id: number, typeOfProperty: TypeOfPropertyAdded) => {
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfProperty.patch(`/${id}`, typeOfProperty);
-          if (res.status != 201) { alert("not added") }
+          if (res.status != 201) { }
 
         } catch (err: any) {
           set({
@@ -304,11 +302,11 @@ export const usePropertiesDataStore = create<DataStore>()(
         }
       },
       //Editing TypeOfWork
-      editTypeOfWork: async (id:number,typeOfWork: TypeOfWorkAdded) => {
+      editTypeOfWork: async (id: number, typeOfWork: TypeOfWorkAdded) => {
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfWork.patch(`/${id}`, typeOfWork);
-          if (res.status != 201) { alert("not added") }
+          if (res.status != 201) { }
 
         } catch (err: any) {
           set({
@@ -318,11 +316,11 @@ export const usePropertiesDataStore = create<DataStore>()(
         }
       },
       //Editing TypeOfOwnering
-      editTypeOfOwnering: async (id :number,typeOfOwnering: TypeOfOwneringAdded) => {
+      editTypeOfOwnering: async (id: number, typeOfOwnering: TypeOfOwneringAdded) => {
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfOwnering.patch(`/${id}`, typeOfOwnering);
-          if (res.status != 201) { alert("not added") }
+          if (res.status != 201) { }
 
         } catch (err: any) {
           set({
@@ -338,11 +336,10 @@ export const usePropertiesDataStore = create<DataStore>()(
           if (property !== null) {
             const { authData } = useAuthStore.getState(); // ✅ dynamically get latest auth data
             property.customerId = authData?.id || 0;
-            console.log("added", property)
             const res = await apiProperty.post(``, property);
             set({ loading: false });
             if (res.status == 201) {
-              alert("Offer Added")
+
             }
           }
         } catch (err: any) {
@@ -357,7 +354,7 @@ export const usePropertiesDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfProperty.post(``, typeOfProperty);
-          if (res.status != 201) { alert("not added") }
+          if (res.status != 201) { }
 
         } catch (err: any) {
           set({
@@ -372,7 +369,7 @@ export const usePropertiesDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfOwnering.post(``, typeOFOwnering);
-          if (res.status != 201) { alert("not added") }
+          if (res.status != 201) { }
 
         } catch (err: any) {
           set({
@@ -387,7 +384,7 @@ export const usePropertiesDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfWork.post(``, typeOfWork);
-          if (res.status != 201) { alert("not added") }
+          if (res.status != 201) { }
 
         } catch (err: any) {
           set({

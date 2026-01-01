@@ -169,7 +169,7 @@ export const useCompanyDataStore = create<DataStore>()(
         } catch (err: any) {
 
           if (err.status == "500") {
-            //alert(err.status)
+            alert(err.status)
           }
 
           set({
@@ -191,7 +191,6 @@ export const useCompanyDataStore = create<DataStore>()(
             error: err.response?.data?.message || 'Error Loading Properties',
             loading: false,
           });
-          console.log(err.response.data)
         }
       },
       editTypeOfCompany: async (id: number, updateTypeOFCompany: UpdateTypeOfCompany) => {
@@ -211,7 +210,7 @@ export const useCompanyDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfCompany.post(``, typeOfCompany);
-          if (res.status != 201) { alert("not added") }
+          if (res.status != 201) {  }
         } catch (err: any) {
           set({
             error: err.response?.data?.message || 'Error Loading Materials',
@@ -224,7 +223,7 @@ export const useCompanyDataStore = create<DataStore>()(
         set({ loading: true, error: null });
         try {
           const res = await apiTypeOfCompany.delete(`/${id}`);
-          if (res.status != 201) { alert("not added") }
+          if (res.status != 201) { }
 
         } catch (err: any) {
           set({

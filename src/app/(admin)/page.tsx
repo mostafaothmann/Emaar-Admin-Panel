@@ -11,8 +11,8 @@ import TypesOfMaterialsCountStatistics from "../../myComponents/statistics/Types
 
 export const metadata: Metadata = {
   title:
-    "Next.js E-commerce Dashboard | EmaarAdmin - Next.js Dashboard Template",
-  description: "This is Next.js Home for EmaarAdmin Dashboard Template",
+    "Emaar Admin Panel",
+  description: "Emaar Admin Panel",
 };
 
 export default function GlobalStatistics() {
